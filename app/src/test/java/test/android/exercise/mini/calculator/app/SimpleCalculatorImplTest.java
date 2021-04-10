@@ -29,7 +29,7 @@ public class SimpleCalculatorImplTest {
   public void when_inputIsMinus_then_outputShouldBeCorrect(){
     SimpleCalculatorImpl calculatorUnderTest = new SimpleCalculatorImpl();
     calculatorUnderTest.insertMinus();
-    String expected = "???"; // TODO: decide the expected output when having a single minus
+    String expected = "0-"; // TODO: decide the expected output when having a single minus
     assertEquals(expected, calculatorUnderTest.output());
   }
 
@@ -89,6 +89,15 @@ public class SimpleCalculatorImplTest {
     calculatorUnderTest.insertEquals();
     calculatorUnderTest.deleteLast();
     assertEquals("2+", calculatorUnderTest.output());
+
+    calculatorUnderTest.clear();
+    calculatorUnderTest.insertDigit(2);
+    calculatorUnderTest.insertMinus();
+    calculatorUnderTest.insertDigit(3);
+    calculatorUnderTest.insertPlus();
+    calculatorUnderTest.insertPlus();
+    calculatorUnderTest.deleteLast();
+    assertEquals("2-3", calculatorUnderTest.output());
     // todo: implement test
   }
 
@@ -108,6 +117,13 @@ public class SimpleCalculatorImplTest {
     calculatorUnderTest.clear();
     assertEquals("0", calculatorUnderTest.output());
 
+    calculatorUnderTest.clear();
+    calculatorUnderTest.insertDigit(1);
+    calculatorUnderTest.insertPlus();
+    calculatorUnderTest.insertDigit(3);
+    calculatorUnderTest.insertEquals();
+    calculatorUnderTest.clear();
+    assertEquals("0", calculatorUnderTest.output());
     
     // todo: implement test
   }

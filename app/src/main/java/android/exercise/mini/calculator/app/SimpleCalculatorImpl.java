@@ -17,24 +17,33 @@ public class SimpleCalculatorImpl implements SimpleCalculator {
     {
       output += values.get(i);
     }
-    return "implement me please";
+    return output;
   }
 
   @Override
   public void insertDigit(int digit) {
+    if (digit < 0 || digit > 9){
+   //   throw new Exception(); ??????
+    }
     this.values.add(Integer.toString(digit));
     // todo: insert a digit
   }
 
   @Override
   public void insertPlus() {
-    this.values.add("+");
+    String lastSign = values.get(values.size() - 1);
+    if (!lastSign.equals("+") && !lastSign.equals("-")){
+      this.values.add("+");
+    }
     // todo: insert a plus
   }
 
   @Override
   public void insertMinus() {
-    this.values.add("-");
+    String lastSign = values.get(values.size() - 1);
+    if (!lastSign.equals("+") && !lastSign.equals("-")){
+      this.values.add("-");
+    }
     // todo: insert a minus
   }
 
@@ -59,6 +68,7 @@ public class SimpleCalculatorImpl implements SimpleCalculator {
   @Override
   public void clear() {
     this.values.clear();
+    this.values.add("0");
     // todo: clear everything (same as no-input was never given)
   }
 

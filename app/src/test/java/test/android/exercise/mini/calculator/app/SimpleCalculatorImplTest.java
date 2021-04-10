@@ -124,7 +124,7 @@ public class SimpleCalculatorImplTest {
     calculatorUnderTest.insertEquals();
     calculatorUnderTest.clear();
     assertEquals("0", calculatorUnderTest.output());
-    
+
     // todo: implement test
   }
 

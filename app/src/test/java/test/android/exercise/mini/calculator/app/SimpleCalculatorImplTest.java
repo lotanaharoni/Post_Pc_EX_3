@@ -47,11 +47,68 @@ public class SimpleCalculatorImplTest {
 
   @Test
   public void when_callingDeleteLast_then_lastOutputShouldBeDeleted(){
+    //TODO: If this way is ok????
+    SimpleCalculatorImpl calculatorUnderTest = new SimpleCalculatorImpl();
+    calculatorUnderTest.insertDigit(1);
+    calculatorUnderTest.deleteLast();
+    assertEquals("0", calculatorUnderTest.output());
+
+    calculatorUnderTest.clear();
+    calculatorUnderTest.deleteLast();
+    assertEquals("0", calculatorUnderTest.output());
+
+    calculatorUnderTest.clear();
+    calculatorUnderTest.insertDigit(1);
+    calculatorUnderTest.insertDigit(2);
+    calculatorUnderTest.insertDigit(3);
+    calculatorUnderTest.deleteLast();
+    assertEquals("12", calculatorUnderTest.output());
+
+    calculatorUnderTest.clear();
+    calculatorUnderTest.insertMinus();
+    calculatorUnderTest.deleteLast();
+    assertEquals("0", calculatorUnderTest.output());
+
+    calculatorUnderTest.clear();
+    calculatorUnderTest.insertDigit(1);
+    calculatorUnderTest.insertMinus();
+    calculatorUnderTest.deleteLast();
+    assertEquals("1", calculatorUnderTest.output());
+
+    calculatorUnderTest.clear();
+    calculatorUnderTest.insertDigit(2);
+    calculatorUnderTest.insertPlus();
+    calculatorUnderTest.insertDigit(3);
+    calculatorUnderTest.deleteLast();
+    assertEquals("2+", calculatorUnderTest.output());
+
+    calculatorUnderTest.clear();
+    calculatorUnderTest.insertDigit(2);
+    calculatorUnderTest.insertPlus();
+    calculatorUnderTest.insertDigit(3);
+    calculatorUnderTest.insertEquals();
+    calculatorUnderTest.deleteLast();
+    assertEquals("2+", calculatorUnderTest.output());
     // todo: implement test
   }
 
   @Test
   public void when_callingClear_then_outputShouldBeCleared(){
+    SimpleCalculatorImpl calculatorUnderTest = new SimpleCalculatorImpl();
+    calculatorUnderTest.insertDigit(1);
+    calculatorUnderTest.clear();
+    assertEquals("0", calculatorUnderTest.output());
+
+    calculatorUnderTest.clear();
+    assertEquals("0", calculatorUnderTest.output());
+
+    calculatorUnderTest.insertDigit(1);
+    calculatorUnderTest.insertDigit(3);
+    calculatorUnderTest.insertPlus();
+    calculatorUnderTest.clear();
+    assertEquals("0", calculatorUnderTest.output());
+
+    
     // todo: implement test
   }
 

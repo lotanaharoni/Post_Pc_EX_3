@@ -96,7 +96,7 @@ public class SimpleCalculatorImplTest {
     calculatorUnderTest.insertDigit(3);
     calculatorUnderTest.insertEquals();
     calculatorUnderTest.deleteLast();
-    assertEquals("2+", calculatorUnderTest.output());
+    assertEquals("0", calculatorUnderTest.output());
 
     calculatorUnderTest.clear();
     calculatorUnderTest.insertDigit(2);

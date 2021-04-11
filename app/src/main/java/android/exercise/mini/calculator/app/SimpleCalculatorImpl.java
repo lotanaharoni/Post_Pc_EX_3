@@ -103,7 +103,8 @@ public class SimpleCalculatorImpl implements SimpleCalculator {
   @Override
   public Serializable saveState() {
     CalculatorState state = new CalculatorState();
-    state.values = this.values;
+    state.values = new ArrayList<String>(this.values);
+
     // todo: insert all data to the state, so in the future we can load from this state
     return state;
   }
@@ -115,9 +116,7 @@ public class SimpleCalculatorImpl implements SimpleCalculator {
     }
     CalculatorState casted = (CalculatorState) prevState;
 
-    this.values.clear();
-
-   // this.values.addAll(casted.values.clone());
+    this.values = new ArrayList<String>(casted.values);
     // todo: use the CalculatorState to load
   }
 

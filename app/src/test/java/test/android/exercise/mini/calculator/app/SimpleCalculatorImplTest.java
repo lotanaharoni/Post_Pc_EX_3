@@ -65,6 +65,15 @@ public class SimpleCalculatorImplTest {
     assertEquals("12", calculatorUnderTest.output());
 
     calculatorUnderTest.clear();
+    calculatorUnderTest.insertDigit(1);
+    calculatorUnderTest.insertDigit(2);
+    calculatorUnderTest.insertDigit(3);
+    calculatorUnderTest.deleteLast();
+    calculatorUnderTest.deleteLast();
+    calculatorUnderTest.deleteLast();
+    assertEquals("0", calculatorUnderTest.output());
+
+    calculatorUnderTest.clear();
     calculatorUnderTest.insertMinus();
     calculatorUnderTest.deleteLast();
     assertEquals("0", calculatorUnderTest.output());
@@ -128,7 +137,7 @@ public class SimpleCalculatorImplTest {
     // todo: implement test
   }
 
-  @Test
+  @Test //TODO
   public void when_savingState_should_loadThatStateCorrectly(){
     SimpleCalculatorImpl calculatorUnderTest = new SimpleCalculatorImpl();
     // give some input
@@ -149,13 +158,50 @@ public class SimpleCalculatorImplTest {
     assertEquals("5+7", calculatorUnderTest.output());
   }
 
-  @Test
+  @Test //TODO
   public void when_savingStateFromFirstCalculator_should_loadStateCorrectlyFromSecondCalculator(){
     SimpleCalculatorImpl firstCalculator = new SimpleCalculatorImpl();
     SimpleCalculatorImpl secondCalculator = new SimpleCalculatorImpl();
     // TODO: implement the test based on this method's name.
     //  you can get inspiration from the test method `when_savingState_should_loadThatStateCorrectly()`
   }
+
+  @Test
+  public void when_insert_data_outputShouldBeCorrect(){
+    SimpleCalculatorImpl calculatorUnderTest = new SimpleCalculatorImpl();
+    calculatorUnderTest.insertDigit(1);
+    calculatorUnderTest.insertDigit(4);
+    calculatorUnderTest.insertMinus();
+    calculatorUnderTest.insertDigit(5);
+    calculatorUnderTest.insertPlus();
+    calculatorUnderTest.insertDigit(7);
+    calculatorUnderTest.insertMinus();
+    calculatorUnderTest.insertDigit(8);
+    calculatorUnderTest.insertDigit(3);
+    calculatorUnderTest.insertPlus();
+    assertEquals("14-5+7-83+", calculatorUnderTest.output());
+  }
+
+  @Test
+  public void when_insert_multiply_orders_outputShouldBeCorrect(){
+    SimpleCalculatorImpl calculatorUnderTest = new SimpleCalculatorImpl();
+    calculatorUnderTest.insertDigit(1);
+    calculatorUnderTest.insertDigit(5);
+    calculatorUnderTest.insertMinus();
+    calculatorUnderTest.insertMinus();
+    calculatorUnderTest.insertDigit(7);
+    assertEquals("15-7", calculatorUnderTest.output());
+  }
+
+  @Test
+  public void when_insert_multiply_zeroes_outputShouldContainsOneZero(){
+    SimpleCalculatorImpl calculatorUnderTest = new SimpleCalculatorImpl();
+    calculatorUnderTest.insertDigit(0);
+    calculatorUnderTest.insertDigit(0);
+    assertEquals("0", calculatorUnderTest.output());
+  }
+
+  //TODO: equal
 
   // TODO:
   //  the existing tests are not enough since they only test simple use-cases with small inputs.

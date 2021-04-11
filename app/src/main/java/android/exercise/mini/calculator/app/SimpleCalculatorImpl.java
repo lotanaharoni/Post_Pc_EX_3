@@ -7,7 +7,11 @@ import java.util.List;
 public class SimpleCalculatorImpl implements SimpleCalculator {
 
   // todo: add fields as needed
-  private List<String> values = new ArrayList<String>();
+  private List<String> values;
+  { //TODO: if legal
+    values = new ArrayList<String>();
+    values.add("0");
+  }
 
   @Override
   public String output() {
@@ -24,8 +28,14 @@ public class SimpleCalculatorImpl implements SimpleCalculator {
   public void insertDigit(int digit) {
     if (digit < 0 || digit > 9){
    //   throw new Exception(); ??????
+      throw new RuntimeException();
     }
-    this.values.add(Integer.toString(digit));
+    if (this.values.size() == 1 && this.values.get(0).equals("0")){
+      this.values.set(0, Integer.toString(digit));
+    }
+    else{
+      this.values.add(Integer.toString(digit));
+    }
     // todo: insert a digit
   }
 
@@ -47,16 +57,34 @@ public class SimpleCalculatorImpl implements SimpleCalculator {
     // todo: insert a minus
   }
 
-  @Override
+  @Override //TODO
   public void insertEquals() {
+    String output = "";
+    int sum = 0;
+    for(int i = 0; i < this.values.size(); i++){
+      if (this.values.get(i).equals("+")){
+
+      }
+      else if (this.values.get(i).equals("-")){
+
+      }
+      else{
+     //   sum += int(Math.pow(10, i + 1)) * this.values.get(i);
+      }
+      this.values.clear();
+    //  for (int j = 0; j < )
+    }
     // todo: calculate the equation. after calling `insertEquals()`, the output should be the result
     //  e.g. given input "14+3", calling `insertEquals()`, and calling `output()`, output should be "17"
   }
 
   @Override
   public void deleteLast() {
-    if (!values.isEmpty()){
+    if (values.size() != 1){
       values.remove(values.size() - 1);
+    }
+    else {
+      this.values.set(0, "0");
     }
     // todo: delete the last input (digit, plus or minus)
     //  e.g.
@@ -72,14 +100,14 @@ public class SimpleCalculatorImpl implements SimpleCalculator {
     // todo: clear everything (same as no-input was never given)
   }
 
-  @Override
+  @Override //TODO
   public Serializable saveState() {
     CalculatorState state = new CalculatorState();
     // todo: insert all data to the state, so in the future we can load from this state
     return state;
   }
 
-  @Override
+  @Override //TODO
   public void loadState(Serializable prevState) {
     if (!(prevState instanceof CalculatorState)) {
       return; // ignore
@@ -88,7 +116,7 @@ public class SimpleCalculatorImpl implements SimpleCalculator {
     // todo: use the CalculatorState to load
   }
 
-          private static class CalculatorState implements Serializable {
+    private static class CalculatorState implements Serializable { //TODO
     /*
     TODO: add fields to this class that will store the calculator state
     all fields must only be from the types:

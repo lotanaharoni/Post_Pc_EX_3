@@ -368,6 +368,13 @@ public class SimpleCalculatorImplTest {
     calculatorUnderTest.insertMinus();
     calculatorUnderTest.insertDigit(7);
     assertEquals("15-7", calculatorUnderTest.output());
+    calculatorUnderTest.insertEquals();
+    assertEquals("8", calculatorUnderTest.output());
+    calculatorUnderTest.insertDigit(5);
+    calculatorUnderTest.insertMinus();
+    calculatorUnderTest.insertDigit(1);
+    calculatorUnderTest.insertEquals();
+    assertEquals("84", calculatorUnderTest.output());
   }
 
   @Test
@@ -402,5 +409,18 @@ public class SimpleCalculatorImplTest {
     calculatorUnderTest.insertDigit(3);
     calculatorUnderTest.insertEquals();
     assertEquals("42", calculatorUnderTest.output());
+  }
+
+  @Test
+  public void when_callingEqual_then_outputShouldBeCalculated2(){
+    SimpleCalculatorImpl calculatorUnderTest = new SimpleCalculatorImpl();
+    calculatorUnderTest.insertMinus();
+    calculatorUnderTest.insertDigit(1);
+    calculatorUnderTest.insertMinus();
+    calculatorUnderTest.insertDigit(4);
+    calculatorUnderTest.insertMinus();
+    calculatorUnderTest.insertDigit(5);
+    calculatorUnderTest.insertEquals();
+    assertEquals("-10", calculatorUnderTest.output());
   }
 }

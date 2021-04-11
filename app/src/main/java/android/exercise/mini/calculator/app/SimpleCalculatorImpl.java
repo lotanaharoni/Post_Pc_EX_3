@@ -53,30 +53,53 @@ public class SimpleCalculatorImpl implements SimpleCalculator {
 
   @Override
   public void insertEquals() {
-    String output = "";
+    boolean negativeFlag = false;
+    String temp = "";
     int sum = 0;
-    String order = "";
-    int index = 0;
+    int tempFinal = 0;
 
-    if(!this.values.get(values.size() - 1).equals("+") ||
+    if(!this.values.get(values.size() - 1).equals("+") &&
             !this.values.get(values.size() - 1).equals("-")){
       for(int i = 0; i < this.values.size(); i++){
         if (this.values.get(i).equals("+")){
-          order = "+";
-          index = 0;
+          for(int j = 0; j < temp.length(); j++){
+            tempFinal += (temp.charAt(j) - '0') * (Math.pow(10, temp.length() - j - 1));
+          }
+          if (negativeFlag) {
+            tempFinal = (-1) * tempFinal;
+          }
+          sum += tempFinal;
+          negativeFlag = false;
+          tempFinal = 0;
+          temp = "";
         }
+
         else if (this.values.get(i).equals("-")){
-          order = "-";
-          index = 1;
+          for(int j = 0; j < temp.length(); j++){
+            tempFinal += (temp.charAt(j) - '0') * (Math.pow(10, temp.length() - j - 1));
+          }
+          if (negativeFlag) {
+            tempFinal = (-1) * tempFinal;
+          }
+          sum += tempFinal;
+          tempFinal = 0;
+          negativeFlag = true;
+          temp = "";
         }
         else{
-          sum += Integer.parseInt(this.values.get(i)) * Math.pow(10, index);
-          index += 1;
-          order = "";
+          temp += (this.values.get(i));
         }
       }
 
-      this.values.set(0, Integer.toString(sum));
+      for(int j = 0; j < temp.length(); j++){
+        tempFinal += (temp.charAt(j) - '0') * (Math.pow(10, temp.length() - j - 1));
+      }
+      if(negativeFlag){
+        tempFinal = (-1) * tempFinal;
+      }
+      sum += tempFinal;
+      this.values.clear();
+      this.values.add(Integer.toString(sum));
     }
     else{
       throw new RuntimeException();

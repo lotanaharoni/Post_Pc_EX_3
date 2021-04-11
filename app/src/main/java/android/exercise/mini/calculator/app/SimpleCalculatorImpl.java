@@ -14,12 +14,12 @@ public class SimpleCalculatorImpl implements SimpleCalculator {
 
   @Override
   public String output() {
-    String output = "";
+    StringBuilder output = new StringBuilder();
     for (int i = 0; i < values.size(); i++)
     {
-      output += values.get(i);
+      output.append(values.get(i));
     }
-    return output;
+    return output.toString();
   }
 
   @Override

@@ -6,16 +6,14 @@ import java.util.List;
 
 public class SimpleCalculatorImpl implements SimpleCalculator {
 
-  // todo: add fields as needed
   private List<String> values;
-  { //TODO: if legal
+  {
     values = new ArrayList<String>();
     values.add("0");
   }
 
   @Override
   public String output() {
-    // todo: return output based on the current state
     String output = "";
     for (int i = 0; i < values.size(); i++)
     {
@@ -35,7 +33,6 @@ public class SimpleCalculatorImpl implements SimpleCalculator {
     else{
       this.values.add(Integer.toString(digit));
     }
-    // todo: insert a digit
   }
 
   @Override
@@ -44,7 +41,6 @@ public class SimpleCalculatorImpl implements SimpleCalculator {
     if (!lastSign.equals("+") && !lastSign.equals("-")){
       this.values.add("+");
     }
-    // todo: insert a plus
   }
 
   @Override
@@ -53,10 +49,9 @@ public class SimpleCalculatorImpl implements SimpleCalculator {
     if (!lastSign.equals("+") && !lastSign.equals("-")){
       this.values.add("-");
     }
-    // todo: insert a minus
   }
 
-  @Override //TODO
+  @Override
   public void insertEquals() {
     String output = "";
     int sum = 0;
@@ -85,26 +80,18 @@ public class SimpleCalculatorImpl implements SimpleCalculator {
     else {
       this.values.set(0, "0");
     }
-    // todo: delete the last input (digit, plus or minus)
-    //  e.g.
-    //  if input was "12+3" and called `deleteLast()`, then delete the "3"
-    //  if input was "12+" and called `deleteLast()`, then delete the "+"
-    //  if no input was given, then there is nothing to do here
   }
 
   @Override
   public void clear() {
     this.values.clear();
     this.values.add("0");
-    // todo: clear everything (same as no-input was never given)
   }
 
   @Override
   public Serializable saveState() {
     CalculatorState state = new CalculatorState();
     state.values = new ArrayList<String>(this.values);
-
-    // todo: insert all data to the state, so in the future we can load from this state
     return state;
   }
 
@@ -114,21 +101,10 @@ public class SimpleCalculatorImpl implements SimpleCalculator {
       return; // ignore
     }
     CalculatorState casted = (CalculatorState) prevState;
-
     this.values = new ArrayList<String>(casted.values);
-    // todo: use the CalculatorState to load
   }
 
-    private static class CalculatorState implements Serializable{ //TODO
+    private static class CalculatorState implements Serializable{
      private List<String> values;
-
-    /*
-    TODO: add fields to this class that will store the calculator state
-    all fields must only be from the types:
-    - primitives (e.g. int, boolean, etc)
-    - String
-    - ArrayList<> where the type is a primitive or a String
-    - HashMap<> where the types are primitives or a String
-     */
   }
 }

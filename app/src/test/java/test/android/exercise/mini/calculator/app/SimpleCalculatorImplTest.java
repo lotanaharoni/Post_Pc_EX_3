@@ -197,6 +197,7 @@ public class SimpleCalculatorImplTest {
     calculatorUnderTest.insertDigit(2);
     calculatorUnderTest.insertDigit(2);
     calculatorUnderTest.insertDigit(2);
+    calculatorUnderTest.insertEquals();
 
     assertEquals("438", calculatorUnderTest.output());
   }
@@ -377,7 +378,7 @@ public class SimpleCalculatorImplTest {
     calculatorUnderTest.insertDigit(8);
     calculatorUnderTest.insertDigit(3);
     calculatorUnderTest.insertEquals();
-    assertEquals("-67", calculatorUnderTest.output()); //TODO: 0-67???
+    assertEquals("-67", calculatorUnderTest.output());
 
     calculatorUnderTest.clear();
     calculatorUnderTest.insertMinus();
@@ -389,18 +390,4 @@ public class SimpleCalculatorImplTest {
     calculatorUnderTest.insertEquals();
     assertEquals("42", calculatorUnderTest.output());
   }
-
-  //TODO: equal
-
-  // TODO:
-  //  the existing tests are not enough since they only test simple use-cases with small inputs.
-  //  write at least 10 methods to test correct behavior with complicated inputs or use-cases.
-  //  examples:
-  //  - given input "5+7-13<DeleteLast>25", expected output is "5+17-125"
-  //  - given input "9<Clear>12<Clear>8-7=", expected output is "1"
-  //  - given input "8-7=+4=-1=", expected output is "4"
-  //  - given input "999-888-222=-333", expected output is "-111-333"
-  //  - with 2 calculators, give them different inputs, then save state on first calculator and load the state into second calculator, make sure state loaded well
-  //  etc etc.
-  //  feel free to be creative in your tests!
 }

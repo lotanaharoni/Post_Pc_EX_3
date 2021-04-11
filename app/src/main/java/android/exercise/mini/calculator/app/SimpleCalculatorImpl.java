@@ -55,21 +55,32 @@ public class SimpleCalculatorImpl implements SimpleCalculator {
   public void insertEquals() {
     String output = "";
     int sum = 0;
-    for(int i = 0; i < this.values.size(); i++){
-      if (this.values.get(i).equals("+")){
+    String order = "";
+    int index = 0;
 
+    if(!this.values.get(values.size() - 1).equals("+") ||
+            !this.values.get(values.size() - 1).equals("-")){
+      for(int i = 0; i < this.values.size(); i++){
+        if (this.values.get(i).equals("+")){
+          order = "+";
+          index = 0;
+        }
+        else if (this.values.get(i).equals("-")){
+          order = "-";
+          index = 1;
+        }
+        else{
+          sum += Integer.parseInt(this.values.get(i)) * Math.pow(10, index);
+          index += 1;
+          order = "";
+        }
       }
-      else if (this.values.get(i).equals("-")){
 
-      }
-      else{
-     //   sum += int(Math.pow(10, i + 1)) * this.values.get(i);
-      }
-      this.values.clear();
-    //  for (int j = 0; j < )
+      this.values.set(0, Integer.toString(sum));
     }
-    // todo: calculate the equation. after calling `insertEquals()`, the output should be the result
-    //  e.g. given input "14+3", calling `insertEquals()`, and calling `output()`, output should be "17"
+    else{
+      throw new RuntimeException();
+    }
   }
 
   @Override

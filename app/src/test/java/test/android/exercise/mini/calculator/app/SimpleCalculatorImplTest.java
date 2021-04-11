@@ -44,6 +44,19 @@ public class SimpleCalculatorImplTest {
     }
   }
 
+  @Test
+  public void when_calling_Equals_when_last_is_order_then_exceptionShouldBeThrown(){
+    SimpleCalculatorImpl calculatorUnderTest = new SimpleCalculatorImpl();
+    try {
+      calculatorUnderTest.insertDigit(3);
+      calculatorUnderTest.insertPlus();
+      calculatorUnderTest.insertEquals();
+      fail("should throw an exception and not reach this line");
+    } catch (RuntimeException e) {
+      // good :)
+    }
+  }
+
 
   @Test
   public void when_callingDeleteLast_then_lastOutputShouldBeDeleted(){

@@ -136,7 +136,7 @@ public class SimpleCalculatorImplTest {
     // todo: implement test
   }
 
-  @Test //TODO
+  @Test
   public void when_savingState_should_loadThatStateCorrectly(){
     SimpleCalculatorImpl calculatorUnderTest = new SimpleCalculatorImpl();
     // give some input
@@ -161,6 +161,92 @@ public class SimpleCalculatorImplTest {
   public void when_savingStateFromFirstCalculator_should_loadStateCorrectlyFromSecondCalculator(){
     SimpleCalculatorImpl firstCalculator = new SimpleCalculatorImpl();
     SimpleCalculatorImpl secondCalculator = new SimpleCalculatorImpl();
+
+    firstCalculator.insertDigit(5);
+    firstCalculator.insertPlus();
+    firstCalculator.insertDigit(7);
+
+    Serializable savedData = firstCalculator.saveState();
+    assertNotNull(savedData);
+
+    firstCalculator.clear();
+    assertEquals("0", firstCalculator.output());
+
+    secondCalculator.loadState(savedData);
+    assertEquals("5+7", secondCalculator.output());
+
+    // TODO: implement the test based on this method's name.
+    //  you can get inspiration from the test method `when_savingState_should_loadThatStateCorrectly()`
+  }
+
+  @Test //TODO
+  public void when_saving_last_inputStateFromFirstCalculator_should_loadStateCorrectlyFromSecondCalculator(){
+    SimpleCalculatorImpl firstCalculator = new SimpleCalculatorImpl();
+    SimpleCalculatorImpl secondCalculator = new SimpleCalculatorImpl();
+
+    firstCalculator.insertDigit(5);
+    firstCalculator.insertPlus();
+    firstCalculator.insertDigit(7);
+    firstCalculator.insertDigit(4);
+    firstCalculator.insertDigit(3);
+    firstCalculator.insertPlus();
+    firstCalculator.insertMinus();
+    firstCalculator.insertDigit(1);
+    firstCalculator.insertDigit(1);
+    firstCalculator.deleteLast();
+    firstCalculator.insertDigit(4);
+
+    Serializable savedData = firstCalculator.saveState();
+    assertNotNull(savedData);
+
+    firstCalculator.clear();
+    assertEquals("0", firstCalculator.output());
+
+    secondCalculator.loadState(savedData);
+    assertEquals("5+743+14", secondCalculator.output());
+
+    // TODO: implement the test based on this method's name.
+    //  you can get inspiration from the test method `when_savingState_should_loadThatStateCorrectly()`
+  }
+
+  @Test //TODO
+  public void when_saving_empty_StateFromFirstCalculator_should_loadStateCorrectlyFromSecondCalculator(){
+    SimpleCalculatorImpl firstCalculator = new SimpleCalculatorImpl();
+    SimpleCalculatorImpl secondCalculator = new SimpleCalculatorImpl();
+
+    Serializable savedData = firstCalculator.saveState();
+    assertNotNull(savedData);
+
+    firstCalculator.clear();
+    assertEquals("0", firstCalculator.output());
+
+    secondCalculator.loadState(savedData);
+    assertEquals("0", secondCalculator.output());
+
+    // TODO: implement the test based on this method's name.
+    //  you can get inspiration from the test method `when_savingState_should_loadThatStateCorrectly()`
+  }
+
+  @Test //TODO
+  public void when_loading_StateFromNotEmptySecondCalculator_should_loadStateCorrectly(){
+    SimpleCalculatorImpl firstCalculator = new SimpleCalculatorImpl();
+    SimpleCalculatorImpl secondCalculator = new SimpleCalculatorImpl();
+
+    firstCalculator.insertDigit(3);
+    firstCalculator.insertMinus();
+    firstCalculator.insertDigit(2);
+
+    secondCalculator.insertDigit(2);
+
+    Serializable savedData = firstCalculator.saveState();
+    assertNotNull(savedData);
+
+    firstCalculator.clear();
+    assertEquals("0", firstCalculator.output());
+
+    secondCalculator.loadState(savedData);
+    assertEquals("3-2", secondCalculator.output());
+
     // TODO: implement the test based on this method's name.
     //  you can get inspiration from the test method `when_savingState_should_loadThatStateCorrectly()`
   }

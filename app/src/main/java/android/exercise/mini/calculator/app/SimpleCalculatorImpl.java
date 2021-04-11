@@ -27,7 +27,6 @@ public class SimpleCalculatorImpl implements SimpleCalculator {
   @Override
   public void insertDigit(int digit) {
     if (digit < 0 || digit > 9){
-   //   throw new Exception(); ??????
       throw new RuntimeException();
     }
     if (this.values.size() == 1 && this.values.get(0).equals("0")){

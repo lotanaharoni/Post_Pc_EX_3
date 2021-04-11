@@ -100,23 +100,30 @@ public class SimpleCalculatorImpl implements SimpleCalculator {
     // todo: clear everything (same as no-input was never given)
   }
 
-  @Override //TODO
+  @Override
   public Serializable saveState() {
     CalculatorState state = new CalculatorState();
+    state.values = this.values;
     // todo: insert all data to the state, so in the future we can load from this state
     return state;
   }
 
-  @Override //TODO
+  @Override
   public void loadState(Serializable prevState) {
     if (!(prevState instanceof CalculatorState)) {
       return; // ignore
     }
     CalculatorState casted = (CalculatorState) prevState;
+
+    this.values.clear();
+
+   // this.values.addAll(casted.values.clone());
     // todo: use the CalculatorState to load
   }
 
-    private static class CalculatorState implements Serializable { //TODO
+    private static class CalculatorState implements Serializable{ //TODO
+     private List<String> values;
+
     /*
     TODO: add fields to this class that will store the calculator state
     all fields must only be from the types:

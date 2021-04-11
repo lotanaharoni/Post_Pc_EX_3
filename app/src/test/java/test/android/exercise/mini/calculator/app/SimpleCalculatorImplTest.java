@@ -47,7 +47,6 @@ public class SimpleCalculatorImplTest {
 
   @Test
   public void when_callingDeleteLast_then_lastOutputShouldBeDeleted(){
-    //TODO: If this way is ok????
     SimpleCalculatorImpl calculatorUnderTest = new SimpleCalculatorImpl();
     calculatorUnderTest.insertDigit(1);
     calculatorUnderTest.deleteLast();
@@ -199,6 +198,32 @@ public class SimpleCalculatorImplTest {
     calculatorUnderTest.insertDigit(0);
     calculatorUnderTest.insertDigit(0);
     assertEquals("0", calculatorUnderTest.output());
+  }
+
+  @Test
+  public void when_callingEqual_then_outputShouldBeCalculated(){
+    SimpleCalculatorImpl calculatorUnderTest = new SimpleCalculatorImpl();
+    calculatorUnderTest.insertDigit(1);
+    calculatorUnderTest.insertDigit(4);
+    calculatorUnderTest.insertMinus();
+    calculatorUnderTest.insertDigit(5);
+    calculatorUnderTest.insertPlus();
+    calculatorUnderTest.insertDigit(7);
+    calculatorUnderTest.insertMinus();
+    calculatorUnderTest.insertDigit(8);
+    calculatorUnderTest.insertDigit(3);
+    calculatorUnderTest.insertEquals();
+    assertEquals("-67", calculatorUnderTest.output()); //TODO: 0-67???
+
+    calculatorUnderTest.clear();
+    calculatorUnderTest.insertMinus();
+    calculatorUnderTest.insertDigit(1);
+    calculatorUnderTest.insertPlus();
+    calculatorUnderTest.insertPlus();
+    calculatorUnderTest.insertDigit(4);
+    calculatorUnderTest.insertDigit(3);
+    calculatorUnderTest.insertEquals();
+    assertEquals("42", calculatorUnderTest.output());
   }
 
   //TODO: equal

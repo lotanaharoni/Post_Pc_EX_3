@@ -126,14 +126,14 @@ public class MainActivity extends AppCompatActivity {
 
   @Override
   protected void onSaveInstanceState(@NonNull Bundle outState) {
-   // outState.putSerializable("calculatorState", calculator.saveState());
+    outState.putSerializable("calculatorState", calculator.saveState());
     super.onSaveInstanceState(outState);
     // todo: save calculator state into the bundle
   }
 
   @Override
   protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
-   // calculator.loadState(savedInstanceState.getSerializable("calculatorState"));
+    calculator.loadState(savedInstanceState.getSerializable("calculatorState"));
     super.onRestoreInstanceState(savedInstanceState);
     // todo: restore calculator state from the bundle, refresh main text-view from calculator's output
   }

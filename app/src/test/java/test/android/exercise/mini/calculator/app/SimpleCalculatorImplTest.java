@@ -44,19 +44,6 @@ public class SimpleCalculatorImplTest {
     }
   }
 
-  @Test
-  public void when_calling_Equals_when_last_is_order_then_exceptionShouldBeThrown(){
-    SimpleCalculatorImpl calculatorUnderTest = new SimpleCalculatorImpl();
-    try {
-      calculatorUnderTest.insertDigit(3);
-      calculatorUnderTest.insertPlus();
-      calculatorUnderTest.insertEquals();
-      fail("should throw an exception and not reach this line");
-    } catch (RuntimeException e) {
-      // good :)
-    }
-  }
-
 
   @Test
   public void when_callingDeleteLast_then_lastOutputShouldBeDeleted(){
@@ -422,5 +409,28 @@ public class SimpleCalculatorImplTest {
     calculatorUnderTest.insertDigit(5);
     calculatorUnderTest.insertEquals();
     assertEquals("-10", calculatorUnderTest.output());
+  }
+
+  @Test
+  public void when_callingEqual_and_continue_calculating_then_outputShouldBeCalculated(){
+    SimpleCalculatorImpl calculatorUnderTest = new SimpleCalculatorImpl();
+    calculatorUnderTest.insertMinus();
+    calculatorUnderTest.insertDigit(1);
+    calculatorUnderTest.insertEquals();
+    calculatorUnderTest.insertMinus();
+    calculatorUnderTest.insertDigit(4);
+    calculatorUnderTest.insertEquals();
+    assertEquals("-5", calculatorUnderTest.output());
+  }
+
+  @Test
+  public void when_callingEqual_on_negative_result_and_continue_calculating_then_outputShouldBeCalculated(){
+    SimpleCalculatorImpl calculatorUnderTest = new SimpleCalculatorImpl();
+    calculatorUnderTest.insertDigit(1);
+    calculatorUnderTest.insertMinus();
+    calculatorUnderTest.insertDigit(4);
+    calculatorUnderTest.insertEquals();
+    calculatorUnderTest.insertEquals();
+    assertEquals("-3", calculatorUnderTest.output());
   }
 }

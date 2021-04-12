@@ -62,8 +62,16 @@ public class SimpleCalculatorImpl implements SimpleCalculator {
             !this.values.get(values.size() - 1).equals("-")){
       for(int i = 0; i < this.values.size(); i++){
         if (this.values.get(i).equals("+")){
-          for(int j = 0; j < temp.length(); j++){
-            tempFinal += (temp.charAt(j) - '0') * (Math.pow(10, temp.length() - j - 1));
+          if(temp.charAt(0) == '-'){
+            for(int j = 1; j < temp.length(); j++){
+              tempFinal += (temp.charAt(j) - '0') * (Math.pow(10, temp.length() - j - 1));
+            }
+            tempFinal = tempFinal * (-1);
+          }
+          else {
+            for(int j = 0; j < temp.length(); j++){
+              tempFinal += (temp.charAt(j) - '0') * (Math.pow(10, temp.length() - j - 1));
+            }
           }
           if (negativeFlag) {
             tempFinal = (-1) * tempFinal;
@@ -75,8 +83,16 @@ public class SimpleCalculatorImpl implements SimpleCalculator {
         }
 
         else if (this.values.get(i).equals("-")){
-          for(int j = 0; j < temp.length(); j++){
-            tempFinal += (temp.charAt(j) - '0') * (Math.pow(10, temp.length() - j - 1));
+          if(temp.charAt(0) == '-'){
+            for(int j = 1; j < temp.length(); j++){
+              tempFinal += (temp.charAt(j) - '0') * (Math.pow(10, temp.length() - j - 1));
+            }
+            tempFinal = tempFinal * (-1);
+          }
+          else {
+            for(int j = 0; j < temp.length(); j++){
+              tempFinal += (temp.charAt(j) - '0') * (Math.pow(10, temp.length() - j - 1));
+            }
           }
           if (negativeFlag) {
             tempFinal = (-1) * tempFinal;
@@ -91,8 +107,16 @@ public class SimpleCalculatorImpl implements SimpleCalculator {
         }
       }
 
-      for(int j = 0; j < temp.length(); j++){
-        tempFinal += (temp.charAt(j) - '0') * (Math.pow(10, temp.length() - j - 1));
+      if(temp.charAt(0) == '-'){
+        for(int j = 1; j < temp.length(); j++){
+          tempFinal += (temp.charAt(j) - '0') * (Math.pow(10, temp.length() - j - 1));
+        }
+        tempFinal = tempFinal * (-1);
+      }
+      else {
+        for(int j = 0; j < temp.length(); j++){
+          tempFinal += (temp.charAt(j) - '0') * (Math.pow(10, temp.length() - j - 1));
+        }
       }
       if(negativeFlag){
         tempFinal = (-1) * tempFinal;
@@ -100,9 +124,6 @@ public class SimpleCalculatorImpl implements SimpleCalculator {
       sum += tempFinal;
       this.values.clear();
       this.values.add(Integer.toString(sum));
-    }
-    else{
-      throw new RuntimeException();
     }
   }
 

@@ -103,27 +103,27 @@ public class AppFlowTest {
 
   @Test
   public void flowTest4(){
-    // run clicks on "33<backspace>1+"
+    // run clicks on "33<backspace>9+"
     for (View button: Arrays.asList(
-            button3, button3, buttonBackspace, button1, buttonPlus
+            button3, button3, buttonBackspace, button9, buttonPlus
     )) {
       button.performClick();
     }
 
-    assertEquals("31+", textViewOutput.getText().toString());
+    assertEquals("39+", textViewOutput.getText().toString());
   }
 
   @Test
   public void flowTest5(){
-    // run clicks on "10+1=+3="
+    // run clicks on "10+6=+3="
     for (View button: Arrays.asList(
-            button1, button0, buttonPlus, button1, buttonEquals,
+            button1, button0, buttonPlus, button6, buttonEquals,
             buttonPlus, button3, buttonEquals
     )) {
       button.performClick();
     }
 
-    assertEquals("14", textViewOutput.getText().toString());
+    assertEquals("19", textViewOutput.getText().toString());
   }
 
   @Test

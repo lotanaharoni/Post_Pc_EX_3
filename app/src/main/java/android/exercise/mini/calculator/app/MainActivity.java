@@ -28,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
     TextView minusButton = findViewById(R.id.buttonMinus);
     TextView clearButton = findViewById(R.id.buttonClear);
     TextView equalButton = findViewById(R.id.buttonEquals);
-   // TextView backSpaceButton = findViewById(R.id.buttonBackSpace);
     TextView zeroButton = findViewById(R.id.button0);
     TextView oneButton = findViewById(R.id.button1);
     TextView twoButton = findViewById(R.id.button2);
@@ -42,40 +41,91 @@ public class MainActivity extends AppCompatActivity {
     ImageView backSpaceImageView = findViewById(R.id.backSpaceImage);
     TextView outputView = findViewById(R.id.textViewCalculatorOutput);
 
-   // outputView.setText("");
+    outputView.setText(calculator.output());
+
+    // outputView.setText("");
     // 2?
 
     plusButton.setOnClickListener(v->{
       calculator.insertPlus();
+      outputView.setText(calculator.output());
     });
 
     minusButton.setOnClickListener(v->{
       calculator.insertMinus();
+      outputView.setText(calculator.output());
     });
 
     clearButton.setOnClickListener(v->{
       calculator.clear();
+      outputView.setText(calculator.output());
     });
 
     equalButton.setOnClickListener(v->{
       calculator.insertEquals();
+      outputView.setText(calculator.output());
     });
 
     zeroButton.setOnClickListener(v->{
-      calculator.insertDigit(1);
+      calculator.insertDigit(0);
+      outputView.setText(calculator.output());
     });
 
-    /*
-    TODO:
-    - find all views
-    - initial update main text-view based on calculator's output
-    - set click listeners on all buttons to operate on the calculator and refresh main text-view
-     */
+    oneButton.setOnClickListener(v->{
+      calculator.insertDigit(1);
+      outputView.setText(calculator.output());
+    });
+
+    twoButton.setOnClickListener(v->{
+      calculator.insertDigit(2);
+      outputView.setText(calculator.output());
+    });
+
+    threeButton.setOnClickListener(v->{
+      calculator.insertDigit(3);
+      outputView.setText(calculator.output());
+    });
+
+    fourButton.setOnClickListener(v->{
+      calculator.insertDigit(4);
+      outputView.setText(calculator.output());
+    });
+
+    fiveButton.setOnClickListener(v->{
+      calculator.insertDigit(5);
+      outputView.setText(calculator.output());
+    });
+
+    sixButton.setOnClickListener(v->{
+      calculator.insertDigit(6);
+      outputView.setText(calculator.output());
+    });
+
+    sevenButton.setOnClickListener(v->{
+      calculator.insertDigit(7);
+      outputView.setText(calculator.output());
+    });
+
+    eightButton.setOnClickListener(v->{
+      calculator.insertDigit(8);
+      outputView.setText(calculator.output());
+    });
+
+    nineButton.setOnClickListener(v->{
+      calculator.insertDigit(9);
+      outputView.setText(calculator.output());
+    });
+
+    backSpaceImageView.setOnClickListener(v->{
+      calculator.deleteLast();
+      outputView.setText(calculator.output());
+    });
   }
 
   @Override
   protected void onSaveInstanceState(@NonNull Bundle outState) {
     super.onSaveInstanceState(outState);
+    calculator.saveState();
     // todo: save calculator state into the bundle
   }
 

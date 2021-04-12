@@ -23,9 +23,11 @@ public class MainActivity extends AppCompatActivity {
     setContentView(R.layout.activity_main);
 
     if (calculator == null) {
-      //    calculator.loadState(savedInstanceState.getSerializable("calculatorState"));
       calculator = new SimpleCalculatorImpl();
     }
+  //  else {
+   //   calculator.loadState(savedInstanceState.getSerializable("calculatorState"));
+  //  }
 
     TextView plusButton = findViewById(R.id.buttonPlus);
     TextView minusButton = findViewById(R.id.buttonMinus);

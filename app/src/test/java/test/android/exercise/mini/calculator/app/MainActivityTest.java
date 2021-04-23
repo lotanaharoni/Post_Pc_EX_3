@@ -24,11 +24,7 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.eq;
 
 @RunWith(RobolectricTestRunner.class)
-@Config(sdk = {30})
-//@Config(maxSdk = Build.VERSION_CODES.P, minSdk = Build.VERSION_CODES.P) // Value of Build.VERSION_CODES.P is 28
-
-//@Config(sdk = {Build.VERSION_CODES.O_MR1})
-//@Config(maxSdk = Build.VERSION_CODES.P)
+@Config(sdk = {28})
 public class MainActivityTest {
 
   private static final String DEFAULT_CALCULATOR_OUTPUT = "~~~ ready to start ~~~";

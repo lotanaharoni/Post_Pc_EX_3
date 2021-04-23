@@ -4,13 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.VisibleForTesting;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.view.View;
 import android.os.Bundle;
-import android.os.PersistableBundle;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
-
-import java.io.Serializable;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,9 +21,6 @@ public class MainActivity extends AppCompatActivity {
     if (calculator == null) {
       calculator = new SimpleCalculatorImpl();
     }
-  //  else {
-   //   calculator.loadState(savedInstanceState.getSerializable("calculatorState"));
-  //  }
 
     TextView plusButton = findViewById(R.id.buttonPlus);
     TextView minusButton = findViewById(R.id.buttonMinus);
@@ -43,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     TextView sevenButton = findViewById(R.id.button7);
     TextView eightButton = findViewById(R.id.button8);
     TextView nineButton = findViewById(R.id.button9);
-    ImageView backSpaceImageView = findViewById(R.id.backSpaceImage);
+    View buttonBackSpace = findViewById(R.id.buttonBackSpace);
     TextView outputView = findViewById(R.id.textViewCalculatorOutput);
 
     outputView.setText(calculator.output());
@@ -118,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
       outputView.setText(calculator.output());
     });
 
-    backSpaceImageView.setOnClickListener(v->{
+    buttonBackSpace.setOnClickListener(v->{
       calculator.deleteLast();
       outputView.setText(calculator.output());
     });
@@ -126,15 +119,15 @@ public class MainActivity extends AppCompatActivity {
 
   @Override
   protected void onSaveInstanceState(@NonNull Bundle outState) {
-    outState.putSerializable("calculatorState", calculator.saveState()); //TODO
+    outState.putSerializable("calculatorState", calculator.saveState());
     super.onSaveInstanceState(outState);
-    // todo: save calculator state into the bundle
   }
 
   @Override
   protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
-    calculator.loadState(savedInstanceState.getSerializable("calculatorState")); //TODO
     super.onRestoreInstanceState(savedInstanceState);
-    // todo: restore calculator state from the bundle, refresh main text-view from calculator's output
+    calculator.loadState(savedInstanceState.getSerializable("calculatorState"));
+    TextView outputView = findViewById(R.id.textViewCalculatorOutput);
+    outputView.setText(calculator.output());
   }
 }

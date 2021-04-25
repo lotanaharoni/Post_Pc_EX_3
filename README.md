@@ -7,5 +7,5 @@ The method will add the 'x' sign to the output.
 In the 'SimpleCalculatorlmpl' we wound need to implement the multiplication behaviour.
 In this class we would need to change the 'insertEqual' method.
 For testing, we would need to test the new button, to check what happens when it been clicked,
-to add some tests to 'AppFlowTest' (which check the flow) and tests would test the logic in
+to add some tests to 'AppFlowTest' (which checks the flow) and tests would test the logic in
 'SimpleCalculatorlmplTet'.
